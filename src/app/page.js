@@ -41,12 +41,11 @@ export default function Home() {
         </Modal.Footer>
       </Modal>
     </>
-        <map name="workmap">
+        <map name="#workmap">
           <area
             shape="rect"
-            coords="34,44,270,350"
-            alt="Computer"
-            onclick={handleShow}
+            coords="450,96,600,243"
+            href="https://giphy.com/gifs/nintendo-mario-switch-3ohfFIJ9M9XCUkE6Na"
           />
           <area
             shape="rect"
