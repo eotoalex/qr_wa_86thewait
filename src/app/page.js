@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from 'react';
-import Button from 'react-bootstrap-buttons';
-import Modal from 'react-bootstrap-modal';
-
+import { Button, Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+
   return (
     <div className="flex items-center justify-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <div>
@@ -21,12 +20,12 @@ export default function Home() {
           className="block"
 
         />
-        <>
+         <>
       {/* <Button variant="primary" onClick={handleShow}>
         Launch demo modal
       </Button> */}
 
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onHide={handleClose} animation={false} transition={false}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
@@ -49,9 +48,8 @@ export default function Home() {
           />
           <area
             shape="rect"
-            coords="290,172,333,250"
-            alt="Phone"
-            onclick={handleShow}
+            coords="141,364,299,409"
+            onClick={handleShow}
           />
           <area
             shape="circle"
