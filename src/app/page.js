@@ -3,12 +3,21 @@
 import { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useRouter } from 'next/navigation';
+
 
 export default function Home() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handlePageRoutes = () => router.push('/orderPage');
+  const router = useRouter();
+  // const navigate = useNavigate();
+
+//  function handlePageRoute () {
+//     return(useNavigate('./orderPage.js'))
+//   }
+
 
   return (
     <div className="flex items-center justify-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -21,10 +30,8 @@ export default function Home() {
 
         />
          <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
 
+    {/* Center this modal since it will be used by iphone and android devices.  */}
       <Modal show={show} onHide={handleClose} animation={false} transition={false}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
@@ -52,10 +59,9 @@ export default function Home() {
             onClick={handleShow}
           />
           <area
-            shape="circle"
-            coords="337,300,44"
-            alt="Coffee"
-            onclick={handleShow}
+            shape="rect"
+            coords="136,418,314,444"
+            onClick={handlePageRoutes}
           />
         </map>
       </div>
