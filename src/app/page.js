@@ -12,7 +12,7 @@ export default function Home() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handlePageRoutes = () => router.push('/orderPage');
-  const log = () => console.log(screenSize)
+  const log = () => console.log("Clcik works")
   const router = useRouter();
 
 
@@ -20,75 +20,121 @@ export default function Home() {
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
     height: typeof window !== 'undefined' ? window.innerHeight : 0,
   });
-  // const screenWidth = screenSize.width;
-  // const screenHeight =screenSize.height;
   
-useEffect( () => {
-     const handleResize = () => {
-      setScreenSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
+  useEffect( () => {
+      const handleResize = () => {
+        setScreenSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      };
 
-    window.addEventListener('resize', handleResize);
-    handleResize(); // set initially
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+      window.addEventListener('resize', handleResize);
+      handleResize(); // set initially
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
-const container = {
-  position: 'relative',
-  backgroundColor: 'rgba(134, 26, 26, 0.4)',
-  width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
-  height: screenSize.height > 0 ? `${screenSize.height * 0.5}px` : '100%', // width in pixels or fallback
-  
-  // display: 'flex',
-  // justifyContent: 'center',
-  // alignItems: 'center',
-}
-const containerStyle = {
-  position: 'relative',
-  aspectRatio: '11 / 9',
-  overflow: 'hidden',
-  backgroundColor: 'rgb(255, 254, 253)',
-  // width: '622px',
-  // height: '921px',
-  width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
-  height: screenSize.height > 0 ? `${screenSize.height * 0.5}px` : '100%', // width in pixels or fallback
-  
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: 'white',
+  const container = {
+    position: 'relative',
+    backgroundColor: 'rgba(134, 26, 26, 0.4)',
+    width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
+    height: screenSize.height > 0 ? `${screenSize.height * 0.5}px` : '100%', // width in pixels or fallback
+    
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  }
+  const containerStyle = {
+    position: 'relative',
+    aspectRatio: '9 / 9',
+    overflow: 'hidden',
+    backgroundColor: 'rgb(255, 254, 253)',
+    // width: '622px',
+    // height: '921px',
+    width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
+    height: screenSize.height > 0 ? `${screenSize.height * 0.5}px` : '100%', // width in pixels or fallback
+    
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
 
-};
-const imageLayer = {
-  position: 'absolute',
-  objectFit: 'contain',
-  width:'100%',
-  height: '100%',
-  zIndex: 0,
-  overflow: 'hidden',
-  margin:'0',
-  padding:'0',
-  
-};
-const overlayStyle = {
-  position: 'absolute',
-  top: '32%',
-  left: '31%',
-  width: '12%',
-  height: '4.7%',
-  backgroundColor: 'rgba(189, 222, 20, 0.4)',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: 'white',
-  fontSize: '24px',
-  zIndex: 1,
-  cursor: 'pointer',
-  
-};
+  };
+  const imageLayer = {
+    position: 'absolute',
+    objectFit: 'contain',
+    width:'100%',
+    height: '100%',
+    zIndex: 0,
+    overflow: 'hidden',
+    margin:'0',
+    padding:'0',
+    
+  };
+  const goldSaucer = {
+    position: 'absolute',
+    top: '32%',
+    left: '27%',
+    width: '12%',
+    height: '4.7%',
+    backgroundColor: 'rgba(189, 222, 20, 0.4)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    fontSize: '24px',
+    zIndex: 1,
+    cursor: 'pointer',
+    
+  };
+  const madeInHeaven = {
+    position: 'absolute',
+    top: '36.8%',
+    left: '27%',
+    width: '19.5%',
+    height: '3.3%',
+    backgroundColor: 'rgba(189, 222, 20, 0.4)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    fontSize: '24px',
+    zIndex: 1,
+    cursor: 'pointer',
+    
+  };
+  const superSonic = {
+    position: 'absolute',
+    top: '40.2%',
+    left: '27%',
+    width: '19.5%',
+    height: '3.4%',
+    backgroundColor: 'rgba(189, 222, 20, 0.4)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    fontSize: '24px',
+    zIndex: 1,
+    cursor: 'pointer',
+    
+  };
+  const psychoCrusher = {
+    position: 'absolute',
+    top: '43.9%',
+    left: '27%',
+    width: '21%',
+    height: '3.4%',
+    backgroundColor: 'rgba(189, 222, 20, 0.4)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    fontSize: '24px',
+    zIndex: 1,
+    cursor: 'pointer',
+    
+  };
   return (
           
     <div style={container} >
@@ -102,11 +148,27 @@ const overlayStyle = {
           />
         {/* Overlay 1 */}
         <div 
-        style={overlayStyle}
+        style={goldSaucer}
         className=''
         onClick={log}
         />
-        </div>
+         <div 
+        style={madeInHeaven}
+        className=''
+        onClick={log}
+        />
+        <div 
+        style={superSonic}
+        className=''
+        onClick={log}
+        />
+         <div 
+        style={psychoCrusher}
+        className=''
+        onClick={log}
+        />
+        
+      </div>
               {/* Modal */}
         <Modal show={show} onHide={handleClose} animation={false} transition={false}>
           <Modal.Header closeButton>
