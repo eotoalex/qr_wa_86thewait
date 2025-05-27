@@ -48,7 +48,7 @@ export default function Home() {
     position: 'relative',
     aspectRatio: '6 / 10',
     overflow: 'hidden',
-    backgroundColor: 'rgb(255, 254, 253)',
+    backgroundColor: 'rgb(29, 5, 57)',
     // width: '622px',
     // height: '921px',
     width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
