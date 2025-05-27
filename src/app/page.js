@@ -46,7 +46,7 @@ export default function Home() {
   }
   const containerStyle = {
     position: 'relative',
-    aspectRatio: '9 / 9',
+    aspectRatio: '6 / 9',
     overflow: 'hidden',
     backgroundColor: 'rgb(255, 254, 253)',
     // width: '622px',
