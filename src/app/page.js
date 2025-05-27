@@ -5,7 +5,6 @@ import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import styles from './styles.css';
 import {
   goldSaucer,
   madeInHeaven,
@@ -20,9 +19,23 @@ import {
   longIslandIcedTea,
   uptownMule,
   amarettoSour,
-  pinaColada
+  pinaColada,
+  regularCockTails,
+  nonAlcoholicBev,
+  oneUpBucket,
+  onDraft,
+  canBottle,
+  fountainDrinks,
+  redBull,
+  bigDrinks
 
 } from './overlayStyles';
+// import {
+//   container,
+//   containerStyle,
+//   imageLayer,
+
+// } from './styles';
 
 export default function Home() {
   const [show, setShow] = useState(false);
@@ -56,21 +69,14 @@ export default function Home() {
     backgroundColor: 'rgba(134, 26, 26, 0.4)',
     width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
     height: screenSize.height > 0 ? `${screenSize.height * 0.5}px` : '100%', // width in pixels or fallback
-    
-    // display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'center',
   }
   const containerStyle = {
     position: 'relative',
     aspectRatio: '6 / 10',
     overflow: 'hidden',
     backgroundColor: 'rgb(29, 5, 57)',
-    // width: '622px',
-    // height: '921px',
     width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
     height: screenSize.height > 0 ? `${screenSize.height * 0.5}px` : '100%', // width in pixels or fallback
-    
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -102,79 +108,117 @@ export default function Home() {
               />
             {/* Overlay 1 */}
             <div 
-            style={goldSaucer}
-            className=''
-            onClick={handleShow}
+              style={goldSaucer}
+              className=''
+              onClick={handleShow}
             />
             <div 
-            style={madeInHeaven}
-            className=''
-            onClick={handleShow}
+              style={madeInHeaven}
+              className=''
+              onClick={handleShow}
             />
             <div 
-            style={superSonic}
-            className=''
-            onClick={handleShow}
+              style={superSonic}
+              className=''
+              onClick={handleShow}
+              />
+            <div 
+              style={psychoCrusher}
+              className=''
+              onClick={handleShow}
             />
             <div 
-            style={psychoCrusher}
-            className=''
-            onClick={handleShow}
+              style={yoshiIsland}
+              className=''
+              onClick={handleShow}
             />
             <div 
-            style={yoshiIsland}
-            className=''
-            onClick={handleShow}
-            />
-            <div 
-            style={loveIsBlue}
-            className=''
-            onClick={handleShow}
-            />
-            <div 
+              style={loveIsBlue}
+              className=''
+              onClick={handleShow}
+          />
+          <div 
               style={mojito}
               className=''
               onClick={handleShow}
-              />
-              <div 
+            />
+            <div 
               style={margarita}
               className=''
               onClick={handleShow}
-              />
-              <div 
+            />
+            <div 
               style={sexOnTheBeach}
               className=''
               onClick={handleShow}
-              />
-              <div 
+            />
+            <div 
               style={tequilaSunrise}
               className=''
               onClick={handleShow}
-              />
-              <div 
+            />
+            <div 
               style={longIslandIcedTea}
               className=''
               onClick={handleShow}
-              />
-              <div 
+            />
+            <div 
               style={uptownMule}
               className=''
               onClick={handleShow}
             />
-                <div 
+            <div 
               style={amarettoSour}
               className=''
               onClick={handleShow}
-              />
-              <div 
+            />
+            <div 
               style={pinaColada}
               className=''
               onClick={handleShow}
             />
-          
-          
-        </div>
-              {/* Modal */}
+            <div 
+              style={regularCockTails}
+              className=''
+              onClick={handleShow}
+            />
+            <div 
+              style={nonAlcoholicBev}
+              className=''
+              onClick={handleShow}
+            />
+            <div 
+              style={oneUpBucket}
+              className=''
+              onClick={handleShow}
+            />
+             <div 
+              style={onDraft}
+              className=''
+              onClick={handleShow}
+            />
+             <div 
+              style={canBottle}
+              className=''
+              onClick={handleShow}
+            />
+             <div 
+              style={fountainDrinks}
+              className=''
+              onClick={handleShow}
+            />
+             <div 
+              style={redBull}
+              className=''
+              onClick={handleShow}
+            />
+            <div 
+              style={bigDrinks}
+              className=''
+              onClick={handleShow}
+            />
+            </div>
+              
         <Modal show={show} onHide={handleClose} animation={false} transition={false}>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
@@ -189,24 +233,6 @@ export default function Home() {
             </Button>
           </Modal.Footer>
         </Modal>
-        {/* <map name="#workmap">
-          <area
-            shape="rect"
-            coords="450,96,600,243"
-            href="https://giphy.com/gifs/nintendo-mario-switch-3ohfFIJ9M9XCUkE6Na"
-          />
-          <area
-            shape="rect"
-            coords="141,364,299,409"
-            onClick={handleShow}
-          />
-          <area
-            shape="rect"
-            coords="136,418,314,444"
-            onClick={handlePageRoutes}
-          />
-        </map> */}
-      
     </div>
   );
 }
