@@ -7,8 +7,6 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import styles from './styles.css';
 
-
-
 export default function Home() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -22,8 +20,8 @@ export default function Home() {
     height: typeof window !== 'undefined' ? window.innerHeight : 0,
   });
   
-useEffect(() => {
-    const handleResize = () => {
+useEffect( () => {
+     const handleResize = () => {
       setScreenSize({
         width: window.innerWidth,
         height: window.innerHeight,
@@ -37,33 +35,53 @@ useEffect(() => {
 
 const container = {
   position: 'relative',
-  backgroundColor: 'rgba(13, 12, 12, 0.4)',
-  width: `${screenSize.width}px`,
-  height: `${screenSize.height}px`,
+  backgroundColor: 'rgba(134, 26, 26, 0.4)',
+  width:  '100%',
+  height: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 }
 
 const containerStyle = {
   position: 'relative',
-  width: `${screenSize.width}px`,
-  height: `${screenSize.height}px`,
   aspectRatio: '16 / 9',
   overflow: 'hidden',
+  backgroundColor: 'rgba(199, 113, 27, 0.4)',
+   border: "5px solid #fff",
+   width: '793px',
+  height: '1123px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: 'white',
+  margin:'0',
+  padding:'0',
+
 };
 
 const imageLayer = {
+  position: 'absolute',
   objectFit: 'contain',
+  width:'100%',
+  height: '100%',
   zIndex: 0,
+  overflow: 'hidden',
+  border: "5px solid #fff",
+  margin:'0',
+  padding:'0',
+  
   
 };
 
 const overlayStyle = {
-  objectFit: 'cover',
+  
   position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '10%',
-  height: '10%',
-  backgroundColor: 'rgba(199, 222, 73, 0.4)',
+  top: 356,
+  left: 140,
+  width: '20%',
+  height: '5%',
+  backgroundColor: 'rgba(189, 222, 20, 0.4)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -71,13 +89,14 @@ const overlayStyle = {
   fontSize: '24px',
   zIndex: 1,
   cursor: 'pointer',
+  border: "2px solid #ffff"
   
 };
 
 
   return (
           
-    <div style={container}>
+    <div style={container} >
       {/* Relative wrapper for Image and overlay */}
       <div style={containerStyle}> {/* Aspect ratio ensures height */}
         <Image
@@ -91,6 +110,7 @@ const overlayStyle = {
         {/* Overlay 1 */}
         <div 
         style={overlayStyle}
+        className=''
         onClick={log}
         />
       
