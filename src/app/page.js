@@ -6,6 +6,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import styles from './styles.css';
+import {
+  goldSaucer,
+  madeInHeaven,
+  superSonic,
+  psychoCrusher,
+  yoshiIsland,
+  loveIsBlue,
+  mojito,
+  margarita,
+  sexOnTheBeach,
+  tequilaSunrise,
+  longIslandIcedTea,
+  uptownMule,
+  amarettoSour,
+  pinaColada
+
+} from './overlayStyles';
 
 export default function Home() {
   const [show, setShow] = useState(false);
@@ -71,104 +88,92 @@ export default function Home() {
     padding:'0',
     
   };
-  const goldSaucer = {
-    position: 'absolute',
-    top: '32%',
-    left: '27%',
-    width: '12%',
-    height: '4.7%',
-    backgroundColor: 'rgba(189, 222, 20, 0.4)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontSize: '24px',
-    zIndex: 1,
-    cursor: 'pointer',
-    
-  };
-  const madeInHeaven = {
-    position: 'absolute',
-    top: '36.8%',
-    left: '27%',
-    width: '19.5%',
-    height: '3.3%',
-    backgroundColor: 'rgba(189, 222, 20, 0.4)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontSize: '24px',
-    zIndex: 1,
-    cursor: 'pointer',
-    
-  };
-  const superSonic = {
-    position: 'absolute',
-    top: '40.2%',
-    left: '27%',
-    width: '19.5%',
-    height: '3.4%',
-    backgroundColor: 'rgba(189, 222, 20, 0.4)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontSize: '24px',
-    zIndex: 1,
-    cursor: 'pointer',
-    
-  };
-  const psychoCrusher = {
-    position: 'absolute',
-    top: '43.9%',
-    left: '27%',
-    width: '21%',
-    height: '3.4%',
-    backgroundColor: 'rgba(189, 222, 20, 0.4)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontSize: '24px',
-    zIndex: 1,
-    cursor: 'pointer',
-    
-  };
+  
   return (
           
     <div style={container} >
       {/* Relative wrapper for Image and overlay */}
-      <div style={containerStyle}> {/* Aspect ratio ensures height */}
-        <Image
-          src="/assets/input_page_04.svg"
-          alt="Workplace"
-          fill
-          style={imageLayer}
-          />
-        {/* Overlay 1 */}
-        <div 
-        style={goldSaucer}
-        className=''
-        onClick={log}
-        />
-         <div 
-        style={madeInHeaven}
-        className=''
-        onClick={log}
-        />
-        <div 
-        style={superSonic}
-        className=''
-        onClick={log}
-        />
-         <div 
-        style={psychoCrusher}
-        className=''
-        onClick={log}
-        />
-        
-      </div>
+        <div style={containerStyle}> {/* Aspect ratio ensures height */}
+            <Image
+              src="/assets/input_page_04.svg"
+              alt="Workplace"
+              fill
+              style={imageLayer}
+              />
+            {/* Overlay 1 */}
+            <div 
+            style={goldSaucer}
+            className=''
+            onClick={handleShow}
+            />
+            <div 
+            style={madeInHeaven}
+            className=''
+            onClick={handleShow}
+            />
+            <div 
+            style={superSonic}
+            className=''
+            onClick={handleShow}
+            />
+            <div 
+            style={psychoCrusher}
+            className=''
+            onClick={handleShow}
+            />
+            <div 
+            style={yoshiIsland}
+            className=''
+            onClick={handleShow}
+            />
+            <div 
+            style={loveIsBlue}
+            className=''
+            onClick={handleShow}
+            />
+            <div 
+              style={mojito}
+              className=''
+              onClick={handleShow}
+              />
+              <div 
+              style={margarita}
+              className=''
+              onClick={handleShow}
+              />
+              <div 
+              style={sexOnTheBeach}
+              className=''
+              onClick={handleShow}
+              />
+              <div 
+              style={tequilaSunrise}
+              className=''
+              onClick={handleShow}
+              />
+              <div 
+              style={longIslandIcedTea}
+              className=''
+              onClick={handleShow}
+              />
+              <div 
+              style={uptownMule}
+              className=''
+              onClick={handleShow}
+            />
+                <div 
+              style={amarettoSour}
+              className=''
+              onClick={handleShow}
+              />
+              <div 
+              style={pinaColada}
+              className=''
+              onClick={handleShow}
+            />
+          
+          
+        </div>
               {/* Modal */}
         <Modal show={show} onHide={handleClose} animation={false} transition={false}>
           <Modal.Header closeButton>
