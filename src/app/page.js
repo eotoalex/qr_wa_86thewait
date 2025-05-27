@@ -15,10 +15,13 @@ export default function Home() {
   const log = () => console.log(screenSize)
   const router = useRouter();
 
+
   const [screenSize, setScreenSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
     height: typeof window !== 'undefined' ? window.innerHeight : 0,
   });
+  // const screenWidth = screenSize.width;
+  // const screenHeight =screenSize.height;
   
 useEffect( () => {
      const handleResize = () => {
@@ -36,30 +39,29 @@ useEffect( () => {
 const container = {
   position: 'relative',
   backgroundColor: 'rgba(134, 26, 26, 0.4)',
-  width:  '100%',
-  height: '100%',
+  width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
+  height: screenSize.height > 0 ? `${screenSize.height * 0.5}px` : '100%', // width in pixels or fallback
+  
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
 }
-
 const containerStyle = {
   position: 'relative',
   aspectRatio: '16 / 9',
   overflow: 'hidden',
-  backgroundColor: 'rgba(199, 113, 27, 0.4)',
-   border: "5px solid #fff",
-   width: '793px',
-  height: '1123px',
+  backgroundColor: 'rgb(255, 254, 253)',
+  // width: '622px',
+  // height: '921px',
+  width: screenSize.width > 0 ? `${screenSize.width * 0.5}px` : '100%', // width in pixels or fallback
+  height: screenSize.height > 0 ? `${screenSize.height * 0.5}px` : '100%', // width in pixels or fallback
+  
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   color: 'white',
-  margin:'0',
-  padding:'0',
 
 };
-
 const imageLayer = {
   position: 'absolute',
   objectFit: 'contain',
@@ -67,19 +69,14 @@ const imageLayer = {
   height: '100%',
   zIndex: 0,
   overflow: 'hidden',
-  border: "5px solid #fff",
   margin:'0',
   padding:'0',
-  
-  
 };
-
 const overlayStyle = {
-  
   position: 'absolute',
-  top: 356,
-  left: 140,
-  width: '20%',
+  top: '32%',
+  left: '36%',
+  width: '10%',
   height: '5%',
   backgroundColor: 'rgba(189, 222, 20, 0.4)',
   display: 'flex',
@@ -90,10 +87,7 @@ const overlayStyle = {
   zIndex: 1,
   cursor: 'pointer',
   border: "2px solid #ffff"
-  
 };
-
-
   return (
           
     <div style={container} >
@@ -105,32 +99,28 @@ const overlayStyle = {
           fill
           style={imageLayer}
           />
-       
-
         {/* Overlay 1 */}
         <div 
         style={overlayStyle}
         className=''
         onClick={log}
         />
-      
         </div>
-
               {/* Modal */}
-      <Modal show={show} onHide={handleClose} animation={false} transition={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        <Modal show={show} onHide={handleClose} animation={false} transition={false}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
         {/* <map name="#workmap">
           <area
             shape="rect"
