@@ -1,5 +1,8 @@
-"use client";
 
+
+"use client";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import { useState,useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,17 +30,13 @@ import {
   canBottle,
   fountainDrinks,
   redBull,
-  bigDrinks
+  bigDrinks,
+  hookah
 
 } from './overlayStyles';
-// import {
-//   container,
-//   containerStyle,
-//   imageLayer,
+import MenuComponent from './MenuComponent'
 
-// } from './styles';
-
-export default function Home() {
+export default function Home({Component, pageProps}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -96,143 +95,8 @@ export default function Home() {
   };
   
   return (
-          
-    <div style={container} >
-      {/* Relative wrapper for Image and overlay */}
-        <div style={containerStyle}> {/* Aspect ratio ensures height */}
-            <Image
-              src="/assets/input_page_04.svg"
-              alt="Workplace"
-              fill
-              style={imageLayer}
-              />
-            {/* Overlay 1 */}
-            <div 
-              style={goldSaucer}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={madeInHeaven}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={superSonic}
-              className=''
-              onClick={handleShow}
-              />
-            <div 
-              style={psychoCrusher}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={yoshiIsland}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={loveIsBlue}
-              className=''
-              onClick={handleShow}
-          />
-          <div 
-              style={mojito}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={margarita}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={sexOnTheBeach}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={tequilaSunrise}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={longIslandIcedTea}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={uptownMule}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={amarettoSour}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={pinaColada}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={regularCockTails}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={nonAlcoholicBev}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={oneUpBucket}
-              className=''
-              onClick={handleShow}
-            />
-             <div 
-              style={onDraft}
-              className=''
-              onClick={handleShow}
-            />
-             <div 
-              style={canBottle}
-              className=''
-              onClick={handleShow}
-            />
-             <div 
-              style={fountainDrinks}
-              className=''
-              onClick={handleShow}
-            />
-             <div 
-              style={redBull}
-              className=''
-              onClick={handleShow}
-            />
-            <div 
-              style={bigDrinks}
-              className=''
-              onClick={handleShow}
-            />
-            </div>
-              
-        <Modal show={show} onHide={handleClose} animation={false} transition={false}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal>
-    </div>
+    <Provider store={store}>     
+       <MenuComponent/>
+    </Provider>
   );
 }
