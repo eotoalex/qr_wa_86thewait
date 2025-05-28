@@ -302,7 +302,7 @@ export const regularCockTails = {
     top: '79.5%',
     left: '17.6%',
     width: '30.5%',
-    height: '3%',
+    height: '2.5%',
     backgroundColor: 'rgba(189, 222, 20, 0.4)',
     display: 'flex',
     justifyContent: 'center',
@@ -344,6 +344,24 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
+
+  export const hookah = {
+    position: 'absolute',
+    top: '82.9%',
+    left: '40%',
+    width: '22%',
+    height: '3%',
+    backgroundColor: 'rgba(189, 222, 20, 0.4)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    fontSize: '24px',
+    zIndex: 1,
+    cursor: 'pointer',
+  };
+
+
 
 
 
