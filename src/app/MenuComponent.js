@@ -1,8 +1,6 @@
-
-
 "use client";
+import { useState,useEffect,useRef } from 'react';
 import {useSelector} from 'react-redux'
-import { useState,useEffect } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/navigation';
@@ -39,9 +37,21 @@ export default function MenuComponent({Component, pageProps}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handlePageRoutes = () => router.push('/orderPage');
-  const log = () => console.log(screenSizer)
   const router = useRouter();
-  const screenSizer = useSelector(state => state);
+  const screenSizer = useSelector(state => state.screenSize);
+  const divRef = useRef(null);
+  const log = (e) =>  {
+   const drink = e
+    // const div = e.currentTarget;
+    // const rect = div.getBoundingClientRect();
+    // const div = document.querySelector('div');
+    // console.log(div.getAttribute('data-info')); // "123"
+    // console.log(e);
+    // console.log(e.target);  // Access the element that was clicked
+   console.log(e.target.getAttribute('textContent')); // Access the text content of the element
+   console.log(e.target.getAttribute('data')); // Access a custom data attribute
+    // console.log('Div info:', rect, div.getAttribute('data-info'));}
+  }
 
 
   const [screenSize, setScreenSize] = useState({
@@ -56,7 +66,6 @@ export default function MenuComponent({Component, pageProps}) {
           height: window.innerHeight,
         });
       };
-
       window.addEventListener('resize', handleResize);
       handleResize(); // set initially
       return () => window.removeEventListener('resize', handleResize);
@@ -107,8 +116,10 @@ export default function MenuComponent({Component, pageProps}) {
                 {/* Overlay 1 */}
                 <div 
                 style={goldSaucer}
-                className=''
-                onClick={log}
+                textContent="Gold Saucer"
+                // value="jalkjdfl;a"
+                data={["Amarreto","Spiced Rum","Orange Juice", "Pineapple Juice","Agave","Lime Juice"]}
+                onClick={((e) => log(e))}
                 />
                 <div 
                 style={madeInHeaven}
