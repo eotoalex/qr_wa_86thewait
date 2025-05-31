@@ -2,11 +2,12 @@ const initialState = { drink: "" };
 
 const orderReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'DRINKORDER':
-      return { drink: state.drink + action.payload };
-    // case 'DECREMENT':
-    //   return { count: state.count - 1 };
-    default:
+      case 'DRINKORDER':
+      return { ...state, drink: action.payload };
+      case 'INGREDIENTS':
+      return {...state, ingredients: action.payload };
+      
+      default:
       return state;
   }
 };
