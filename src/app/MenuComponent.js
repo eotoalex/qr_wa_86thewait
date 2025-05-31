@@ -255,7 +255,7 @@ export default function MenuComponent({Component, pageProps}) {
                 <div 
                 style={redBull}
                 className=''
-                onClick={handleShow}
+                onClick={testFunction}
                 />
                 <div 
                 style={bigDrinks}

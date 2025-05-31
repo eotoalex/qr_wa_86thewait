@@ -6,7 +6,6 @@ const orderReducer = (state = initialState, action) => {
       return { ...state, drink: action.payload };
       case 'INGREDIENTS':
       return {...state, ingredients: action.payload };
-      
       default:
       return state;
   }

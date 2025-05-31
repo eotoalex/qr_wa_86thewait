@@ -5,7 +5,8 @@ const initialState = {
   
   export function screenSizeReducer(state = initialState, action) {
     switch(action.type) {
-      case 'SET_SCREEN_SIZE':
+      case 'CART':
+        // might to add + sign to the initial state instead of replacing the initial state.
         return action.payload;
       default:
         return state;
