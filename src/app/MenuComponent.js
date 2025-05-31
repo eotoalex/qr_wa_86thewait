@@ -1,6 +1,6 @@
 "use client";
 import { useState,useEffect,useRef } from 'react';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/navigation';
@@ -38,19 +38,21 @@ export default function MenuComponent({Component, pageProps}) {
   const handleShow = () => setShow(true);
   const handlePageRoutes = () => router.push('/orderPage');
   const router = useRouter();
-  const screenSizer = useSelector(state => state.screenSize);
-  const divRef = useRef(null);
-  const log = (e) =>  {
-   const drink = e
-    // const div = e.currentTarget;
-    // const rect = div.getBoundingClientRect();
-    // const div = document.querySelector('div');
-    // console.log(div.getAttribute('data-info')); // "123"
-    // console.log(e);
-    // console.log(e.target);  // Access the element that was clicked
-   console.log(e.target.getAttribute('textContent')); // Access the text content of the element
-   console.log(e.target.getAttribute('data')); // Access a custom data attribute
-    // console.log('Div info:', rect, div.getAttribute('data-info'));}
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  const updateSomething = (drink,ingredients) => {
+    dispatch({ type: 'DRINKORDER', payload: drink });
+    dispatch({ type: 'INGREDIENTS', payload: ingredients });
+  };
+  const logToState =  (e) =>  {
+    const drink = e.target.getAttribute('textContent');
+    const ingredients = e.target.getAttribute('data');
+    const addToState =  updateSomething(drink,ingredients)
+    addToState
+  }
+
+  const testFunction = () => {
+    console.log(state)
   }
 
 
@@ -113,23 +115,23 @@ export default function MenuComponent({Component, pageProps}) {
                 fill
                 style={imageLayer}
                 />
-                {/* Overlay 1 */}
                 <div 
                 style={goldSaucer}
                 textContent="Gold Saucer"
-                // value="jalkjdfl;a"
                 data={["Amarreto","Spiced Rum","Orange Juice", "Pineapple Juice","Agave","Lime Juice"]}
-                onClick={((e) => log(e))}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={madeInHeaven}
-                className=''
-                onClick={handleShow}
+                textContent="Made in Heaven"
+                data={["Amarreto","Sour Mix","Grenadine", "Passion Fruit Juice","Sprite"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={superSonic}
-                className=''
-                onClick={handleShow}
+                textContent="Super Sonic"
+                data={["Tequila", "Peach Schnapps", "Passion Fruit Juice"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={psychoCrusher}

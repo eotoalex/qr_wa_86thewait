@@ -3,7 +3,7 @@ import orderReducer from './orderReducer';
 import { screenSizeReducer } from './screenSizeReducer';
 
 const rootReducer = combineReducers({
-  drink: orderReducer,
+  order: orderReducer,
   screenSize: screenSizeReducer,
 });
 
