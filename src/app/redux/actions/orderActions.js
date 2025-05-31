@@ -6,7 +6,7 @@ export const drinkOrder = (value) => ({
     type: 'INGREDIENTS',
     payload: value,
   });
-  export const setScreenSize = (size) => ({
-    type: 'SET_SCREEN_SIZE',
+  export const cart = (value) => ({
+    type: 'CART',
     payload: size,
   });
