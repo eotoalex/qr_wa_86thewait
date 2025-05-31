@@ -115,6 +115,9 @@ export default function MenuComponent({Component, pageProps}) {
                 fill
                 style={imageLayer}
                 />
+                {/* Add a shot button should be added to each presable overlay */}
+                 {/* Add a hookah button should be added to each presable overlay */}
+                
                 <div 
                 style={goldSaucer}
                 textContent="Gold Saucer"
@@ -135,88 +138,119 @@ export default function MenuComponent({Component, pageProps}) {
                 />
                 <div 
                 style={psychoCrusher}
-                className=''
-                onClick={handleShow}
+                textContent="Psycho Crusher"
+                data={["Cognac", "Blue Curacao", "Grenadine","Sour Mix","Sprite"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={yoshiIsland}
-                className=''
-                onClick={handleShow}
+                textContent="Yoshi's Island"
+                data={["Vodka", "Lemon Liqueur", "Sour Mix","Sour Apple","Pineapple Juice"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={loveIsBlue}
-                className=''
-                onClick={handleShow}
+                textContent="Love is Blue"
+                data={["Rum", "Blue Curacao", "Coconut Cream","Heavy Cream","Pineapple Juice"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={mojito}
-                className=''
-                onClick={handleShow}
+                textContent="Mojito"
+                data={["Rum", "Lime Juice", "Soda","Simple Syrup","Mint"]}
+                // Need to add a flavors feature here.
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={margarita}
-                className=''
-                onClick={handleShow}
+                textContent="Margarita"
+                data={["Tequila", "Triple Sec", "Sour Mix","Lime Juice"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={sexOnTheBeach}
-                className=''
-                onClick={handleShow}
+                textContent="Sex on the Beach"
+                data={["Vodka", "Peach Schnapps", "Orange Juice","Cranberry Juice"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={tequilaSunrise}
-                className=''
-                onClick={handleShow}
+                textContent="Tequila Sunrise"
+                data={["Vodka", "Grenadine", "Orange Juice"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={longIslandIcedTea}
-                className=''
-                onClick={handleShow}
+                textContent="Long Island Iced Tea"
+                data={["Gin", "Vodka", "Rum","Tequila","Triple Sec","Sour Mix","Cola"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={uptownMule}
-                className=''
-                onClick={handleShow}
+                textContent="Uptown Mule"
+                // Choice of Tequila, Vodka or Whiskey
+                // Choice of Simple Syrup or Agave
+                data={["Choose Liquor","Choose Simple Syrup or Agave","Lime", "Ginger Beer"]}
+                onClick={((e) => logToState(e))}
+                // Need to add a type of Liquor Feature and a Brand of Liquor feature
                 />
                 <div 
                 style={amarettoSour}
-                className=''
-                onClick={handleShow}
+                textContent="Amaretto Sour"
+                data={["Amaretto", "Sour Mix", "Grenadine","Sprite"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={pinaColada}
-                className=''
-                onClick={handleShow}
+                textContent="Pina Colada"
+                data={["Rum", "Coconut Cream", "Grenadine","Pineapple Juice"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={regularCockTails}
-                className=''
-                onClick={handleShow}
+                textContent="Regular Cocktails"
+                data={["Choice of Liquor, choice of Brand"]}
+                onClick={((e) => logToState(e))}
+                // Add input area for drink name or ingredient list.
                 />
                 <div 
                 style={nonAlcoholicBev}
-                className=''
-                onClick={handleShow}
+                textContent="Mocktales [Non-Alcoholic]"
+                // List of mocktales other than these
+                // Input box to make your own drink with the preset tools provided to price the drink
+                // House Signature Cocktails will be in a drop down labeled House Signature Cocktails
+                // Regular Cocktails will be in a drop down labeled Regular Cocktails (other more known drinks will be put there as well.)
+                // Make your own drink section will be available where they can click the alchole, the brand, and mixers
+                // Known Mocktails drop down will be available as well. This feature will be for alcoholic and non-alcoholic options.
+                data={["Gold Saucer", "Made in Heaven", "Super Sonic","Psycho Crusher","Yoshi's Island","Love is Blue","Cola"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={oneUpBucket}
-                className=''
-                onClick={handleShow}
+                textContent="1Up Bucket"
+                // Button choices for standard and premium
+                data={["Standard, Premium"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={onDraft}
-                className=''
-                onClick={handleShow}
+                textContent="Draft Beers"
+                // Button choices for draft beer choices
+                data={["Goose Island IPA, Shock Top","Kona Big Wave", "Stella Artois", "Blue Moon","Michelob Ultra"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={canBottle}
-                className=''
-                onClick={handleShow}
+                textContent="Bottle/Can Beers"
+                // Button choices for bottled/canned beer choices
+                data={["Corona","Modelo","Heineken", "Presidente", "Stella Liberte [NON ALCOHOLIC]"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={fountainDrinks}
-                className=''
-                onClick={handleShow}
+                textContent="Fountain Drinks"
+                data={["Coke","Pepsi","Sprite","Ginger Ale"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={redBull}
@@ -225,13 +259,16 @@ export default function MenuComponent({Component, pageProps}) {
                 />
                 <div 
                 style={bigDrinks}
-                className=''
-                onClick={handleShow}
+                textContent="Bottle/Can Beers"
+                // Button choices for henny colada or gamers punch
+                data={["Henny Colada","Gamer's Punch"]}
+                onClick={((e) => logToState(e))}
                 />
                 <div 
                 style={hookah}
-                className=''
-                onClick={handleShow}
+                textContent="Hookah"
+                data={["Sky Fall", "Mint", "Peach", "Blueberry"]}
+                onClick={((e) => logToState(e))}
                 />
                 </div>
                 
