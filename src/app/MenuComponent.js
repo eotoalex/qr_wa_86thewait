@@ -31,6 +31,7 @@ import {
   hookah
 
 } from './overlayStyles';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function MenuComponent({Component, pageProps}) {
   const [show, setShow] = useState(false);
@@ -39,22 +40,41 @@ export default function MenuComponent({Component, pageProps}) {
   const handlePageRoutes = () => router.push('/orderPage');
   const router = useRouter();
   const state = useSelector(state => state);
+  const drink = state.order.drink.drink;
+  const ingredients = state.order.drink.ingredients;
+  const quantity = state.order.drink.quantity;
+
   const dispatch = useDispatch();
+  
+//   const orderObj = orderObject
   const updateSomething = (drink,ingredients) => {
     dispatch({ type: 'DRINKORDER', payload: drink });
-    dispatch({ type: 'INGREDIENTS', payload: ingredients });
+    // dispatch({ type: 'INGREDIENTS', payload: ingredients });
   };
   const logToState =  (e) =>  {
     const drink = e.target.getAttribute('textContent');
     const ingredients = e.target.getAttribute('data');
-    const addToState =  updateSomething(drink,ingredients)
+    const price = "2.99";
+    const id = uuidv4();
+    const quantity = "1";
+    const orderObject = {
+        id:id,
+        drink:drink,
+        ingredients:ingredients,
+        price:price,
+        quantity: quantity
+    };
+    const addToState =  updateSomething(orderObject)
     addToState
-  }
+
+    return (
+        handleShow () 
+    )
+  };
 
   const testFunction = () => {
-    console.log(state)
+    console.log(state.order.drink.drink)
   }
-
 
   const [screenSize, setScreenSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
@@ -274,15 +294,17 @@ export default function MenuComponent({Component, pageProps}) {
                 
                 <Modal show={show} onHide={handleClose} animation={false} transition={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>{drink}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>{ingredients}</Modal.Body>
+                <Modal.Body>{quantity}</Modal.Body>
+                <Modal.Body>{state.order.drink.price}</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                    Close
+                    Go Back
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                    Save Changes
+                    Add to Cart
                     </Button>
                 </Modal.Footer>
                 </Modal>
