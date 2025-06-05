@@ -7,6 +7,6 @@ export const drinkOrder = (value) => ({
     payload: value,
   });
   export const cart = (value) => ({
-    type: 'CART',
+    type: 'ADDTOCART',
     payload: size,
   });
