@@ -48,6 +48,7 @@ export default function MenuComponent({Component, pageProps}) {
   
 //   const orderObj = orderObject
   const updateSomething = (drink,ingredients) => {
+   
     dispatch({ type: 'DRINKORDER', payload: drink });
     // dispatch({ type: 'INGREDIENTS', payload: ingredients });
   };
@@ -73,7 +74,15 @@ export default function MenuComponent({Component, pageProps}) {
   };
 
   const testFunction = () => {
-    console.log(state.order.drink.drink)
+    console.log(state)
+  };
+
+  const addToCart = () => {
+    // Create a visual of the cart with a delete or garbage button to remove or edit items in the cart.
+     dispatch({ type: 'ADDTOCART', payload: drink });
+    // Get a small modal on the top right of the screen to confirm this order of the drink.
+    console.log("Your ",drink," was added to the cart successfully.")
+    handleClose()
   }
 
   const [screenSize, setScreenSize] = useState({
@@ -303,7 +312,7 @@ export default function MenuComponent({Component, pageProps}) {
                     <Button variant="secondary" onClick={handleClose}>
                     Go Back
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={addToCart}>
                     Add to Cart
                     </Button>
                 </Modal.Footer>
