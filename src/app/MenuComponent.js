@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
+  cartImg,
   goldSaucer,
   madeInHeaven,
   superSonic,
@@ -31,16 +32,21 @@ import {
   hookah
 } from './overlayStyles';
 import { v4 as uuidv4 } from 'uuid';
+import UserItemModal from './modals'; // Adjust path as needed
 
 export default function MenuComponent({Component, pageProps}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  // const [showCart, setShowCart] = useState(false);
+  // const handleCloseCart = () => setShowCart(false);
+  // const handleCheckout = () => { /* your checkout logic */ };
   const router = useRouter();
   const state = useSelector(state => state);
   const drink = state.order.drink.drink;
   const ingredients = state.order.drink.ingredients;
   const quantity = state.order.drink.quantity;
+  const price = state.order.drink.price;
   const dispatch = useDispatch();
   const handlePageRoutes = () => router.push('/orderPage');
   
@@ -137,7 +143,14 @@ export default function MenuComponent({Component, pageProps}) {
             />
             {/* Add a shot button should be added to each presable overlay */}
                 {/* Add a hookah button should be added to each presable overlay */}
-            
+            <div
+            style={cartImg}
+            textcontent={"Cart Image"}
+            data={"Array of data from state"}
+            // Create a function that takes the array of user's choices from state.
+            // onClick={((e) => usersChoice(e))}
+            />
+
             <div 
             style={goldSaucer}
             textcontent="Gold Saucer"
@@ -290,24 +303,26 @@ export default function MenuComponent({Component, pageProps}) {
             data={["Sky Fall", "Mint", "Peach", "Blueberry"]}
             onClick={((e) => usersChoice(e))}
             />
-            </div>
-            
-            <Modal show={show} onHide={handleClose} animation={false} transition={false}>
-            <Modal.Header closeButton>
-                <Modal.Title>{drink}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>{ingredients}</Modal.Body>
-            <Modal.Body>{quantity}</Modal.Body>
-            <Modal.Body>{state.order.drink.price}</Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                Go Back
-                </Button>
-                <Button variant="primary" onClick={addToCart}>
-                Add to Cart
-                </Button>
-            </Modal.Footer>
-            </Modal>
+        </div>
+       
+
+        <UserItemModal
+          show={show}
+          handleClose={handleClose}
+          addToCart={addToCart}
+          drink={drink}
+          ingredients={ingredients}
+          quantity={quantity}
+          price={price}
+        />
+        {/* <ShoppingCartModal
+        show={showCart}
+        handleClose={handleCloseCart}
+        cartItems={'state.cart'}
+        handleCheckout={handleCheckout}
+      /> */}
+       
+
     </div>
   );
 };
