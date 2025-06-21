@@ -1,3 +1,19 @@
+export const cartImg = {
+  position: 'absolute',
+  top: '15%',
+  left: '79%',
+  width: '6%',
+  height: '4%',
+  backgroundColor: 'rgba(20, 222, 40, 0.4)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: 'white',
+  fontSize: '24px',
+  zIndex: 1,
+  cursor: 'pointer',
+  
+};
 export const goldSaucer = {
     position: 'absolute',
     top: '35.3%',
