@@ -1,4 +1,5 @@
 "use client";
+import { client } from './page';
 import { useState,useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { Button, Modal } from 'react-bootstrap';
@@ -33,6 +34,38 @@ import {
 } from './overlayStyles';
 import { v4 as uuidv4 } from 'uuid';
 import UserItemModal from './modals'; // Adjust path as needed
+const listUsersQuery = `
+  query {
+    getUsers {
+      data
+    }
+  }
+`;
+// Create User to DB
+const createUserQuery = `
+mutation CreateUser {
+  createUser(input: {
+    username: "Dick Tracey",
+    email: "dtracey@example.com",
+    password: "password",
+    access_token: "sdt435y4ggrh",
+    refresh_token: "56u67hej53h5g"
+  }) {
+    username
+    email
+    access_token
+    refresh_token
+  }
+}`
+// Delete User/s in DB by ID
+const deleteUserQuery = `mutation {
+  deleteUserInfo(input: {
+    id: "52"
+  }) {
+    data
+  }
+}
+`
 
 export default function MenuComponent({Component, pageProps}) {
   const [show, setShow] = useState(false);
@@ -90,7 +123,19 @@ export default function MenuComponent({Component, pageProps}) {
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
     height: typeof window !== 'undefined' ? window.innerHeight : 0,
   });
-  useEffect( () => {
+ 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      // console.log('API:', Amplify.API);
+      try {
+        const result = await client.graphql({ query: listUsersQuery });
+        console.log('Result:', result.data);
+        setUsers(result);
+      } catch (err) {
+        console.error('Error fetching users:', err);
+      }
+    };
+    fetchUsers();
       const handleResize = () => {
         setScreenSize({
           width: window.innerWidth,
@@ -101,6 +146,7 @@ export default function MenuComponent({Component, pageProps}) {
       handleResize(); // set initially
       return () => window.removeEventListener('resize', handleResize);
     }, []);
+
   const container = {
     position: 'relative',
     backgroundColor: 'rgba(134, 26, 26, 0.4)',
