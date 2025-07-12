@@ -107,7 +107,6 @@ export const goldSaucer = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
   export const mojito = {
     position: 'absolute',
     top: '34.4%',
@@ -228,9 +227,6 @@ export const goldSaucer = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
-//   regularCockTails
-
 // Customer can choose a drink to be made- check box liquor, ice not ice
 export const regularCockTails = {
     position: 'absolute',
@@ -247,7 +243,6 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
    // Non-Alcoholic - scroll through non-alcholic cocktails
   export const nonAlcoholicBev = {
     position: 'absolute',
@@ -264,7 +259,6 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
   export const oneUpBucket = {
     position: 'absolute',
     top: '58.6%',
@@ -280,7 +274,6 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
   export const onDraft = {
     position: 'absolute',
     top: '66.5%',
@@ -296,7 +289,6 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
   export const canBottle = {
     position: 'absolute',
     top: '66.5%',
@@ -312,7 +304,6 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
   export const fountainDrinks = {
     position: 'absolute',
     top: '79.5%',
@@ -328,7 +319,6 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
   export const redBull = {
     position: 'absolute',
     top: '79.5%',
@@ -344,7 +334,6 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
   export const bigDrinks = {
     position: 'absolute',
     top: '58.9%',
@@ -360,7 +349,6 @@ export const regularCockTails = {
     zIndex: 1,
     cursor: 'pointer',
   };
-
   export const hookah = {
     position: 'absolute',
     top: '82.9%',
