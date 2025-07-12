@@ -150,7 +150,6 @@ export default function MenuComponent({Component, pageProps}) {
             // Create a function that takes the array of user's choices from state.
             // onClick={((e) => usersChoice(e))}
             />
-
             <div 
             style={goldSaucer}
             textcontent="Gold Saucer"
@@ -304,8 +303,6 @@ export default function MenuComponent({Component, pageProps}) {
             onClick={((e) => usersChoice(e))}
             />
         </div>
-       
-
         <UserItemModal
           show={show}
           handleClose={handleClose}
@@ -321,8 +318,6 @@ export default function MenuComponent({Component, pageProps}) {
         cartItems={'state.cart'}
         handleCheckout={handleCheckout}
       /> */}
-       
-
     </div>
   );
 };
