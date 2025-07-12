@@ -2,7 +2,7 @@
 import { client } from './page';
 import { useState,useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { Button, Modal } from 'react-bootstrap';
+import { Offcanvas, Button, ListGroup, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -69,10 +69,11 @@ const deleteUserQuery = `mutation {
 
 export default function MenuComponent({Component, pageProps}) {
   const [show, setShow] = useState(false);
+  const [cartShow, setShowCart] = useState(false)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // const [showCart, setShowCart] = useState(false);
-  // const handleCloseCart = () => setShowCart(false);
+  const handleCloseCart = () => setShowCart(false);
+  const handleShowCart = () => setShowCart(true);
   // const handleCheckout = () => { /* your checkout logic */ };
   const router = useRouter();
   const state = useSelector(state => state);
@@ -82,6 +83,26 @@ export default function MenuComponent({Component, pageProps}) {
   const price = state.order.drink.price;
   const dispatch = useDispatch();
   const handlePageRoutes = () => router.push('/orderPage');
+  const cartItems = [
+    {
+      drink: "Latte",
+      ingredients: "Espresso, Steamed Milk",
+      quantity: 2,
+      price: 4.5,
+    },
+    {
+      drink: "Cappuccino",
+      ingredients: "Espresso, Steamed Milk, Foam",
+      quantity: 1,
+      price: 3.75,
+    },
+    {
+      drink: "Iced Americano",
+      ingredients: "Espresso, Water, Ice",
+      quantity: 1,
+      price: 3.25,
+    },
+  ];
   
   // User's choice of drink is sent to redux state tree.   
   const currentState = (drink,ingredients) => {
@@ -108,6 +129,16 @@ export default function MenuComponent({Component, pageProps}) {
         handleShow () 
     )
   };
+  // Cart showing
+  const handleCartShow =  (e) =>  {
+    console.log("This is in the cart bitches!")
+
+    return (
+      handleShowCart() 
+    )
+  };
+
+
   //This functions logs the state to see whats in the users current choice and what they choose to put in the cart.   
   const testFunction = () => {
     console.log(state)
@@ -194,7 +225,7 @@ export default function MenuComponent({Component, pageProps}) {
             textcontent={"Cart Image"}
             data={"Array of data from state"}
             // Create a function that takes the array of user's choices from state.
-            // onClick={((e) => usersChoice(e))}
+            onClick={((e) => handleCartShow(e))}
             />
             <div 
             style={goldSaucer}
@@ -364,6 +395,41 @@ export default function MenuComponent({Component, pageProps}) {
         cartItems={'state.cart'}
         handleCheckout={handleCheckout}
       /> */}
+
+
+
+<Offcanvas show={cartShow} onHide={handleCloseCart} placement="end">
+      <Offcanvas.Header closeButton>
+        <Offcanvas.Title>Your Cart</Offcanvas.Title>
+      </Offcanvas.Header>
+      <Offcanvas.Body>
+        {cartItems.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <ListGroup>
+            {cartItems.map((item, index) => (
+              <ListGroup.Item key={index}>
+                <div><strong>{item.drink}</strong></div>
+                <div>Ingredients: {item.ingredients}</div>
+                <div>Quantity: {item.quantity}</div>
+                <div>Price: ${item.price}</div>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        )}
+        {cartItems.length > 0 && (
+          <div className="mt-3 text-end">
+            <Button variant="success" onClick={"handleCheckout"}>
+              Checkout
+            </Button>
+          </div>
+        )}
+      </Offcanvas.Body>
+    </Offcanvas>
+
+
+
+
     </div>
   );
 };
