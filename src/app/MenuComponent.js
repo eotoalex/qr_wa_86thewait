@@ -33,7 +33,7 @@ import {
   hookah
 } from './overlayStyles';
 import { v4 as uuidv4 } from 'uuid';
-import UserItemModal from './modals'; // Adjust path as needed
+import {UserItemModal, CartModal} from './modals'; 
 const listUsersQuery = `
   query {
     getUsers {
@@ -56,7 +56,7 @@ mutation CreateUser {
     access_token
     refresh_token
   }
-}`
+}`;
 // Delete User/s in DB by ID
 const deleteUserQuery = `mutation {
   deleteUserInfo(input: {
@@ -64,12 +64,12 @@ const deleteUserQuery = `mutation {
   }) {
     data
   }
-}
-`
-
+}`;
 export default function MenuComponent({Component, pageProps}) {
   const [show, setShow] = useState(false);
-  const [cartShow, setShowCart] = useState(false)
+  const [cartShow, setShowCart] = useState(false);
+  // const [cartItems, setCartItems] = usestate();  
+  // setCartItems is a little different
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleCloseCart = () => setShowCart(false);
@@ -83,6 +83,16 @@ export default function MenuComponent({Component, pageProps}) {
   const price = state.order.drink.price;
   const dispatch = useDispatch();
   const handlePageRoutes = () => router.push('/orderPage');
+  // Add this setCartItems function for every time someone clicks a desired item while ordering.
+  // setCartItems((prevItems) => {
+  //   const index = prevItems.findIndex((item) => item.drink === newItem.drink);
+  //   if (index !== -1) {
+  //     const updatedItems = [...prevItems];
+  //     updatedItems[index].quantity += newItem.quantity;
+  //     return updatedItems;
+  //   }
+  //   return [...prevItems, newItem];
+  // });
   const cartItems = [
     {
       drink: "Latte",
@@ -103,7 +113,6 @@ export default function MenuComponent({Component, pageProps}) {
       price: 3.25,
     },
   ];
-  
   // User's choice of drink is sent to redux state tree.   
   const currentState = (drink,ingredients) => {
     dispatch({ type: 'DRINKORDER', payload: drink });
@@ -132,13 +141,10 @@ export default function MenuComponent({Component, pageProps}) {
   // Cart showing
   const handleCartShow =  (e) =>  {
     console.log("This is in the cart bitches!")
-
     return (
       handleShowCart() 
     )
   };
-
-
   //This functions logs the state to see whats in the users current choice and what they choose to put in the cart.   
   const testFunction = () => {
     console.log(state)
@@ -166,7 +172,7 @@ export default function MenuComponent({Component, pageProps}) {
         console.error('Error fetching users:', err);
       }
     };
-    fetchUsers();
+    // fetchUsers();
       const handleResize = () => {
         setScreenSize({
           width: window.innerWidth,
@@ -389,47 +395,12 @@ export default function MenuComponent({Component, pageProps}) {
           quantity={quantity}
           price={price}
         />
-        {/* <ShoppingCartModal
-        show={showCart}
-        handleClose={handleCloseCart}
-        cartItems={'state.cart'}
-        handleCheckout={handleCheckout}
-      /> */}
-
-
-
-<Offcanvas show={cartShow} onHide={handleCloseCart} placement="end">
-      <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Your Cart</Offcanvas.Title>
-      </Offcanvas.Header>
-      <Offcanvas.Body>
-        {cartItems.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <ListGroup>
-            {cartItems.map((item, index) => (
-              <ListGroup.Item key={index}>
-                <div><strong>{item.drink}</strong></div>
-                <div>Ingredients: {item.ingredients}</div>
-                <div>Quantity: {item.quantity}</div>
-                <div>Price: ${item.price}</div>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        )}
-        {cartItems.length > 0 && (
-          <div className="mt-3 text-end">
-            <Button variant="success" onClick={"handleCheckout"}>
-              Checkout
-            </Button>
-          </div>
-        )}
-      </Offcanvas.Body>
-    </Offcanvas>
-
-
-
-
+        <CartModal
+        cartShow={cartShow}
+        handleCloseCart={handleCloseCart}
+        cartItems={cartItems}
+        handleCheckout={'handleCheckout'}
+        />
     </div>
   );
 };
