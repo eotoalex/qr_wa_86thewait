@@ -68,57 +68,27 @@ const deleteUserQuery = `mutation {
 export default function MenuComponent({Component, pageProps}) {
   const [show, setShow] = useState(false);
   const [cartShow, setShowCart] = useState(false);
-  // const [cartItems, setCartItems] = usestate();  
-  // setCartItems is a little different
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleCloseCart = () => setShowCart(false);
   const handleShowCart = () => setShowCart(true);
-  // const handleCheckout = () => { /* your checkout logic */ };
   const router = useRouter();
   const state = useSelector(state => state);
+  const cartItems = state.order.cart;
+  const id = state.order.drink.id;
   const drink = state.order.drink.drink;
   const ingredients = state.order.drink.ingredients;
   const quantity = state.order.drink.quantity;
   const price = state.order.drink.price;
   const dispatch = useDispatch();
-  const handlePageRoutes = () => router.push('/orderPage');
-  // Add this setCartItems function for every time someone clicks a desired item while ordering.
-  // setCartItems((prevItems) => {
-  //   const index = prevItems.findIndex((item) => item.drink === newItem.drink);
-  //   if (index !== -1) {
-  //     const updatedItems = [...prevItems];
-  //     updatedItems[index].quantity += newItem.quantity;
-  //     return updatedItems;
-  //   }
-  //   return [...prevItems, newItem];
-  // });
-  const cartItems = [
-    {
-      drink: "Latte",
-      ingredients: "Espresso, Steamed Milk",
-      quantity: 2,
-      price: 4.5,
-    },
-    {
-      drink: "Cappuccino",
-      ingredients: "Espresso, Steamed Milk, Foam",
-      quantity: 1,
-      price: 3.75,
-    },
-    {
-      drink: "Iced Americano",
-      ingredients: "Espresso, Water, Ice",
-      quantity: 1,
-      price: 3.25,
-    },
-  ];
-  // User's choice of drink is sent to redux state tree.   
-  const currentState = (drink,ingredients) => {
-    dispatch({ type: 'DRINKORDER', payload: drink });
+  const handlePageRoutes = () => router.push('/orderPage');  
+  const currentState = async (orderObject) => {
+    dispatch({ type: 'DRINKORDER', payload: orderObject });
+    return Promise.resolve();
   };
   // This function saves the users tapped choice to the redux state tree. usersChoice  
-  const usersChoice =  (e) =>  {
+  const usersChoice = async (e) =>  {
+    const prevItems = state;
     const drink = e.target.getAttribute('textContent');
     const ingredients = e.target.getAttribute('data');
     const price = "2.99";
@@ -131,16 +101,16 @@ export default function MenuComponent({Component, pageProps}) {
         price:price,
         quantity: quantity
     };
-    const addToState =  currentState(orderObject)
-    addToState
-
-    return (
-        handleShow () 
-    )
+    try {
+      await currentState(orderObject); // Wait for state update
+    
+      handleShow(); // Only called after currentState is done
+    } catch (error) {
+      console.error("Failed to update state:", error);
+    }
   };
   // Cart showing
   const handleCartShow =  (e) =>  {
-    console.log("This is in the cart bitches!")
     return (
       handleShowCart() 
     )
@@ -150,11 +120,28 @@ export default function MenuComponent({Component, pageProps}) {
     console.log(state)
   };
   const addToCart = () => {
-    // Create a visual of the cart with a delete or garbage button to remove or edit items in the cart.
-     dispatch({ type: 'ADDTOCART', payload: drink });
-    // Get a small modal on the top right of the screen to confirm this order of the drink.
-    console.log("Your ",drink," was added to the cart successfully.")
+    const orderObject = {
+      id:id,
+      drink:drink,
+      price:price,
+      quantity:quantity
+    }
+    dispatch({ type: 'ADDTOCART', payload: orderObject });
     handleClose()
+  };
+  const handleCheckout = async () => { 
+    // Add the order to the database as an open order.
+    // status:open or closed
+    // order:{cartItems}
+    // timeStamp:(Time of Order)
+    try {
+        const result = await client.graphql({ query: listUsersQuery });
+        console.log('Result:',JSON.stringify(result.data.getUsers.data) );
+      } catch (err) {
+        console.error('Error fetching users:', err);
+      }
+
+    setShowCart(false) 
   };
   const [screenSize, setScreenSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
@@ -182,8 +169,7 @@ export default function MenuComponent({Component, pageProps}) {
       window.addEventListener('resize', handleResize);
       handleResize(); // set initially
       return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
+  }, []);
   const container = {
     position: 'relative',
     backgroundColor: 'rgba(134, 26, 26, 0.4)',
@@ -399,7 +385,7 @@ export default function MenuComponent({Component, pageProps}) {
         cartShow={cartShow}
         handleCloseCart={handleCloseCart}
         cartItems={cartItems}
-        handleCheckout={'handleCheckout'}
+        handleCheckout={handleCheckout}
         />
     </div>
   );

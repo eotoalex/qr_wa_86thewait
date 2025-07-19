@@ -20,10 +20,7 @@ export function UserItemModal({ show, handleClose, addToCart, drink, ingredients
       </Modal.Footer>
     </Modal>
   );
-}
-
-
-// Swipe right to see cart
+};
 export function CartModal({ cartShow, handleCloseCart, cartItems, handleCheckout }) {
   return (
   <Offcanvas show={cartShow} onHide={handleCloseCart} placement="end">
@@ -57,10 +54,8 @@ export function CartModal({ cartShow, handleCloseCart, cartItems, handleCheckout
   );
 };
 
-
+// Swipe right to see cart
 // Swipe left to close out.
 
-
-
-// Click on bottons on the bottom of the screen to go to cart or close out. Cart will look like a shopping cart
+// Cart thumbnail should look like a shopping cart
 // close out will look like a money exchanging hands.

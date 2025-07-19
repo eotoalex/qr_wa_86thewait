@@ -5,7 +5,7 @@ const initialState = {
 const orderReducer = (state = initialState, action) => {
   switch (action.type) {
       case 'DRINKORDER':
-      return { ...state, drink: action.payload };
+      return { ...state , drink: action.payload};
       case 'INGREDIENTS':
       return {...state, ingredients: action.payload };
       case 'ADDTOCART':
